@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 import unittest
+import neural_renderer
 
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
