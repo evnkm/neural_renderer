@@ -12,18 +12,16 @@ at::Tensor load_textures_cuda(
 
 // C++ interface
 
-#define CHECK_CUDA(x) AT_CHECK(x.device().is_cuda(), #x " must be a CUDA tensor")
-#define CHECK_CONTIGUOUS(x) AT_CHECK(x.is_contiguous(), #x " must be contiguous")
+#define CHECK_CUDA(x) TORCH_CHECK(x.device().is_cuda(), #x " must be a CUDA tensor")
+#define CHECK_CONTIGUOUS(x) TORCH_CHECK(x.is_contiguous(), #x " must be contiguous")
 #define CHECK_INPUT(x) CHECK_CUDA(x); CHECK_CONTIGUOUS(x)
 
 
-at::Tensor load_textures(
-        at::Tensor image,
-        at::Tensor faces,
+at::Tensor create_texture_image(
+        at::Tensor vertices_all,
         at::Tensor textures,
-        at::Tensor is_update,
-        int texture_wrapping,
-        int use_bilinear) {
+        at::Tensor image,
+        float eps) {
 
     CHECK_INPUT(image);
     CHECK_INPUT(faces);
