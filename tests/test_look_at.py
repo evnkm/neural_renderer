@@ -22,7 +22,7 @@ class TestLookAt(unittest.TestCase):
         for e, a in zip(eyes, answers):
             eye = np.array(e, np.float32)
             transformed = nr.look_at(vertices, eye)
-            assert(np.allclose(transformed.data.squeeze().numpy(), np.array(a)))
+            assert(np.allclose(transformed.data_ptr.squeeze().numpy(), np.array(a)))
 
 if __name__ == '__main__':
     unittest.main()

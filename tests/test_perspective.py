@@ -11,7 +11,7 @@ class TestPerspective(unittest.TestCase):
         v_out = np.array([np.sqrt(3) / 10, 2 * np.sqrt(3) / 10, 10], np.float32)
         vertices = vertices[None, None, :]
         transformer = nr.perspective(vertices)
-        assert(np.allclose(transformer.data.squeeze().numpy(), v_out))
+        assert(np.allclose(transformer.data_ptr.squeeze().numpy(), v_out))
 
 if __name__ == '__main__':
     unittest.main()
