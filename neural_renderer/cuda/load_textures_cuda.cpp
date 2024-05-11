@@ -17,11 +17,13 @@ at::Tensor load_textures_cuda(
 #define CHECK_INPUT(x) CHECK_CUDA(x); CHECK_CONTIGUOUS(x)
 
 
-at::Tensor create_texture_image(
-        at::Tensor vertices_all,
-        at::Tensor textures,
+at::Tensor load_textures(
         at::Tensor image,
-        float eps) {
+        at::Tensor faces,
+        at::Tensor textures,
+        at::Tensor is_update,
+        int texture_wrapping,
+        int use_bilinear) {
 
     CHECK_INPUT(image);
     CHECK_INPUT(faces);
